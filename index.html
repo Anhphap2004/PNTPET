@@ -30,70 +30,98 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid border-bottom d-none d-lg-block">
-        <div class="row gx-0">
-            <div class="col-lg-4 text-center py-2">
-                <div class="d-inline-flex align-items-center">
-                    <i class="bi bi-geo-alt fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase mb-1">Our Office</h6>
-                        <span>123 Street, New York, USA</span>
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top"
+    style="background-color: #fff; box-shadow: 0 5px 20px rgba(220, 53, 69, 0.1);">
+    <div class="container">
+        <!-- Logo với màu đỏ -->
+        <a href="index.html" class="navbar-brand">
+            <h1 class="m-0 text-uppercase fw-bold" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+                <i class="bi bi-shop fs-2 me-2" style="color: #dc3545;"></i>
+                <span style="color: #dc3545;">Pet</span>
+                <span>Shop</span>
+            </h1>
+        </a>
+
+        <!-- Toggle button -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            style="box-shadow: none;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto py-0">
+                <a href="index.html" class="nav-item nav-link active fw-medium mx-2"
+                    style="position: relative; overflow: hidden;">
+                    Trang chủ
+                    <span
+                        style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #dc3545, transparent); transform: scaleX(0); transition: transform 0.3s; transform-origin: center;"></span>
+                </a>
+                <a href="about.html" class="nav-item nav-link fw-medium mx-2"
+                    style="position: relative; overflow: hidden;">
+                    Giới thiệu
+                    <span
+                        style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #dc3545, transparent); transform: scaleX(0); transition: transform 0.3s; transform-origin: center;"></span>
+                </a>
+                <a href="service.html" class="nav-item nav-link fw-medium mx-2"
+                    style="position: relative; overflow: hidden;">
+                    Dịch vụ
+                    <span
+                        style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #dc3545, transparent); transform: scaleX(0); transition: transform 0.3s; transform-origin: center;"></span>
+                </a>
+                <a href="product.html" class="nav-item nav-link fw-medium mx-2"
+                    style="position: relative; overflow: hidden;">
+                    Sản phẩm
+                    <span
+                        style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #dc3545, transparent); transform: scaleX(0); transition: transform 0.3s; transform-origin: center;"></span>
+                </a>
+
+                <!-- Account hover menu -->
+                <div class="nav-item mx-2" style="position: relative;"
+                    onmouseover="document.getElementById('accountDropdown').style.display='block'; document.getElementById('accountDropdown').style.opacity='1'; document.getElementById('accountDropdown').style.transform='translateY(0)';"
+                    onmouseout="document.getElementById('accountDropdown').style.display='none'; document.getElementById('accountDropdown').style.opacity='0'; document.getElementById('accountDropdown').style.transform='translateY(10px)';">
+                    <a href="#" class="nav-link fw-medium" style="position: relative; overflow: hidden;">
+                        Tài khoản <i class="bi bi-person"></i>
+                        <span
+                            style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #dc3545, transparent); transform: scaleX(0); transition: transform 0.3s; transform-origin: center;"></span>
+                    </a>
+                    <!-- Dropdown content -->
+                    <div id="accountDropdown"
+                        style="display: none; position: absolute; top: 100%; right: 0; min-width: 220px; background-color: white; border-radius: 10px; padding: 15px; box-shadow: 0 15px 35px rgba(220, 53, 69, 0.2); z-index: 1000; opacity: 0; transform: translateY(10px); transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);">
+                        <div class="text-center mb-3">
+                            <div
+                                style="width: 60px; height: 60px; margin: 0 auto; background: linear-gradient(45deg, #dc3545, #ff6b81); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-person-fill" style="font-size: 30px; color: white;"></i>
+                            </div>
+                            <p class="mt-2 mb-3" style="font-size: 14px; color: #666;">Đăng nhập để truy cập tài khoản
+                            </p>
+                        </div>
+                        <a href="login.html" class="btn w-100 mb-2"
+                            style="background: white; color: #dc3545; border: 2px solid #dc3545; border-radius: 30px; padding: 8px 15px; transition: all 0.3s ease; font-weight: 500;">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Đăng nhập
+                        </a>
+                        <a href="register.html" class="btn w-100"
+                            style="background: linear-gradient(45deg, #dc3545, #ff6b81); color: white; border: none; border-radius: 30px; padding: 10px 15px; transition: all 0.3s ease; font-weight: 500; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);">
+                            <i class="bi bi-person-plus me-2"></i>Đăng ký
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 text-center border-start border-end py-2">
-                <div class="d-inline-flex align-items-center">
-                    <i class="bi bi-envelope-open fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase mb-1">Email Us</h6>
-                        <span>info@example.com</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 text-center py-2">
-                <div class="d-inline-flex align-items-center">
-                    <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase mb-1">Call Us</h6>
-                        <span>+012 345 6789</span>
-                    </div>
-                </div>
+
+            <!-- Contact button -->
+            <div>
+                <a href="contact.html" class="btn px-4 py-2"
+                    style="background: linear-gradient(45deg, #dc3545, #ff6b81); color: white; border-radius: 30px; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); transition: all 0.3s ease; font-weight: 500;">
+                    Liên hệ <i class="bi bi-arrow-right ms-2"></i>
+                </a>
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+</nav>
 
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
-        <a href="index.html" class="navbar-brand ms-lg-5">
-            <h1 class="m-0 text-uppercase text-dark"><i class="bi bi-shop fs-1 text-primary me-3"></i>Pet Shop</h1>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Service</a>
-                <a href="product.html" class="nav-item nav-link">Product</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                        <a href="team.html" class="dropdown-item">The Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                        <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i class="bi bi-arrow-right"></i></a>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+
 
 
     <!-- Hero Start -->
