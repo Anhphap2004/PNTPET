@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Kiểm tra mật khẩu
             if (password_verify($password, $hashed_password)) {
-                $_SESSION["user_id"] = $row["id"];
+                $_SESSION["user_id"] = $row["user_id"];
                 $_SESSION["username"] = $row["username"];
-
+                
                 header("Location: index.php"); // Chuyển hướng sau khi đăng nhập thành công
                 exit();
             } else {
