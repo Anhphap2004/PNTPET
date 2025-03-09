@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <title>PET SHOP - Pet Shop Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta comment="width=device-width, initial-scale=1.0" name="viewport">
+    <meta comment="Free HTML Templates" name="keywords">
+    <meta comment="Free HTML Templates" name="description">
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
@@ -95,24 +95,40 @@
 
                     <?php while ($comment = $result_comments->fetch_assoc()) : ?>
                         <div class="d-flex mb-4">
-                            <img src="<?php echo htmlspecialchars(!empty($comment['profile_image']) ? '../img/Username/' . $comment['profile_image'] : '../img/Animal/meocon.jpg'); ?>"
-                                class="img-fluid rounded-circle"
+                            <?php
+                            // Nếu có user_id, lấy ảnh đại diện và tên từ bảng users
+                            if (!empty($comment['user_id'])) {
+                                $sql_user = "SELECT full_name, profile_image FROM users WHERE user_id = ?";
+                                $stmt_user = $conn->prepare($sql_user);
+                                $stmt_user->bind_param("i", $comment['user_id']);
+                                $stmt_user->execute();
+                                $result_user = $stmt_user->get_result();
+                                $user = $result_user->fetch_assoc();
+                                $stmt_user->close();
+
+                                $display_name = $user['full_name'] ?? 'Người dùng';
+                                $profile_image = !empty($user['profile_image']) ? '../img/Username/' . $user['profile_image'] : '../img/Animal/meocon.jpg';
+                            } else {
+                                // Nếu không có user_id, lấy thông tin từ comment
+                                $display_name = $comment['name'];
+                                $profile_image = '../img/Animal/meocon.jpg'; // Ảnh mặc định
+                            }
+                            ?>
+                            <img src="<?php echo htmlspecialchars($profile_image); ?>" class="img-fluid rounded-circle"
                                 style="width: 45px; height: 45px; object-fit: cover;">
                             <div class="ps-3">
                                 <h6>
                                     <a href="">
-                                        <?php
-                                        echo htmlspecialchars(!empty($comment['full_name']) ? $comment['full_name'] : $comment['author_name']);
-                                        ?>
+                                        <?php echo htmlspecialchars($display_name); ?>
                                     </a>
                                     <small><i><?php echo date("d M Y", strtotime($comment['created_at'])); ?></i></small>
                                 </h6>
-                                <p><?php echo nl2br(htmlspecialchars($comment['content'])); ?></p>
+                                <p><?php echo nl2br(htmlspecialchars($comment['comment'])); ?></p>
                                 <button class="btn btn-sm btn-light">Reply</button>
                             </div>
                         </div>
-
                     <?php endwhile; ?>
+
 
                 </div>
                 <!-- Comment List End -->
@@ -127,20 +143,20 @@
                 <!-- Comment Form Start -->
                 <div class="bg-light rounded p-4 shadow">
                     <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Leave a comment</h3>
-                    <form action="process_comment.php" method="POST">
+                    <form action="process_review.php" method="POST">
                         <input type="hidden" name="animal_id" value="<?php echo $animal_id; ?>">
 
                         <div class="row g-3">
                             <?php if (!isset($_SESSION['user_id'])) : ?>
                                 <!-- Nếu người dùng chưa đăng nhập -->
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" name="author_name" class="form-control bg-white border rounded-pill px-3"
-                                        placeholder="Your Name" value="<?php echo htmlspecialchars($_POST['author_name'] ?? ''); ?>" required
+                                    <input type="text" name="name" class="form-control bg-white border rounded-pill px-3"
+                                        placeholder="Your Name" value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>" required
                                         style="height: 50px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" name="author_email" class="form-control bg-white border rounded-pill px-3"
-                                        placeholder="Your Email" value="<?php echo htmlspecialchars($_POST['author_email'] ?? ''); ?>" required
+                                    <input type="email" name="email" class="form-control bg-white border rounded-pill px-3"
+                                        placeholder="Your Email" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>" required
                                         style="height: 50px;">
                                 </div>
                             <?php else: ?>
@@ -151,8 +167,8 @@
 
                         <div class="row mt-3">
                             <div class="col-12">
-                                <textarea name="content" class="form-control bg-white border rounded-3 px-3 py-2"
-                                    rows="5" placeholder="Write your comment..." required><?php echo htmlspecialchars($_POST['content'] ?? ''); ?></textarea>
+                                <textarea name="comment" class="form-control bg-white border rounded-3 px-3 py-2"
+                                    rows="5" placeholder="Write your comment..." required><?php echo htmlspecialchars($_POST['comment'] ?? ''); ?></textarea>
                             </div>
                         </div>
 
@@ -181,12 +197,83 @@
                 </div>
                 <!-- Search Form End -->
 
-                <!-- Category Start -->
-                <?php include 'process_category_blog.php'; ?>
+                <?php
+                // Lấy danh mục động vật bằng JOIN với bảng categories
+                $sql = "SELECT animals.*, animal_categories.category_name
+        FROM animals
+        JOIN animal_categories ON animals.category_id = animal_categories.category_id
+        WHERE animal_id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $animal_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $category = $result->fetch_assoc();
+                $stmt->close();
+                ?>
+
+                <!-- DANH MỤC THÚ CƯNG Category Start -->
+                <div class="mb-5">
+                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">DANH MỤC</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <?php if (!empty($category) && isset($category['category_name'])) : ?>
+                            <a href="#" class="d-flex align-items-center py-2 px-3 bg-light mb-1">
+                                <i class="bi bi-arrow-right text-primary me-2"></i>
+                                <span class="fw-bold fs-5 text-black category-highlight">
+                                    <?= htmlspecialchars($category['category_name']) ?>
+                                </span>
+                            </a>
+                        <?php else : ?>
+                            <p class="text-muted px-3">Không có danh mục nào.</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
                 <!-- Category End -->
 
+
+
                 <!-- Recent Post Start -->
-                <?php include 'process_blog_recent.php';  ?>
+                <?php
+                // Lấy category_id của động vật hiện tại
+                $sql = "SELECT category_id FROM animals WHERE animal_id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $animal_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $currentAnimal = $result->fetch_assoc();
+                $category_id = $currentAnimal['category_id'];
+                $stmt->close();
+
+                // Truy vấn danh sách động vật cùng danh mục (loại trừ con hiện tại)
+                $sql = "SELECT animal_id, name, image, description 
+        FROM animals 
+        WHERE category_id = ? AND animal_id != ? 
+        LIMIT 5"; // Giới hạn số lượng hiển thị
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ii", $category_id, $animal_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $relatedAnimals = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close();
+                ?>
+                <div class="mb-5">
+                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Động vật liên quan</h3>
+
+                    <?php if (!empty($relatedAnimals)) : ?>
+                        <?php foreach ($relatedAnimals as $animal) : ?>
+                            <div class="d-flex overflow-hidden mb-3 align-items-start">
+                                <img class="img-fluid" src="<?= htmlspecialchars($animal['image']) ?>" style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                                <div class="ms-2">
+                                    <a href="detail_animal.php?id=<?= $animal['animal_id'] ?>" class="animal-name"><?= htmlspecialchars($animal['name']) ?></a>
+                                    <p class="animal-desc"><?= htmlspecialchars($animal['description']) ?></p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <p class="text-muted px-3">Không có động vật liên quan.</p>
+                    <?php endif; ?>
+                </div>
+                <!-- Recent Post End -->
+
                 <!-- Recent Post End -->
 
                 <!-- Image Start -->
@@ -258,7 +345,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Liên Kết Nhanh</h5>
-                    <div class="d-flex flex-column justify-content-start">
+                    <div class="d-flex flex-column justify-comment-start">
                         <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
                         <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Về Chúng
                             Tôi</a>
@@ -270,7 +357,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Liên Kết Phổ Biến</h5>
-                    <div class="d-flex flex-column justify-content-start">
+                    <div class="d-flex flex-column justify-comment-start">
                         <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
                         <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Về Chúng
                             Tôi</a>
