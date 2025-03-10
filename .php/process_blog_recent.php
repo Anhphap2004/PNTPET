@@ -1,6 +1,6 @@
 <!-- Recent Post Start -->
 <div class="mb-5">
-    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Bài Viết Gần Nhất</h3>
+    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Bài Viết Gần Nhất</h3>
     <?php
     require 'config.php'; // Kết nối database
 

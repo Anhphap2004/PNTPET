@@ -230,8 +230,9 @@
     top: 50%;
     left: 10px;
     margin-top: -1px;
-    background: var(--primary);
+    background: #dc3545;
     transition: .3s;
+    
 }
 
 .service-item a:hover i::after {
@@ -273,7 +274,7 @@
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    background: var(--primary);
+    background: #DC3545;
     font-size: 22px;
     transition: .5s;
 }
@@ -348,7 +349,7 @@
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    background: var(--primary);
+    background: #DC3545;
     font-size: 22px;
     transition: .5s;
 }
@@ -413,7 +414,7 @@
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    background: var(--primary);
+    background: #DC3545;
     font-size: 22px;
     transition: .5s;
 }
@@ -452,7 +453,7 @@
     top: 50%;
     left: 10px;
     margin-top: -1px;
-    background: var(--primary);
+    background: #DC3545;
     transition: .3s;
 }
 

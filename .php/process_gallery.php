@@ -20,7 +20,7 @@ if ($result->num_rows > 0) {
                 <div class="team-overlay"></div>
             </div>
             <div class="bg-light text-center p-4">
-                <h5 class="text-uppercase"><?= htmlspecialchars($row["title"]) ?></h5>
+                <h5 class="text-danger text-uppercase"><?= htmlspecialchars($row["title"]) ?></h5>
                 <p class="m-0"><?= htmlspecialchars($row["description"]) ?></p>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <!-- Category Start -->
 <div class="mb-5">
-    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Danh Mục</h3>
+    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Danh Mục</h3>
     <div class="d-flex flex-column justify-content-start">
         <?php
         require 'config.php'; // Kết nối database

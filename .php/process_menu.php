@@ -19,14 +19,22 @@ $isLoggedIn = isset($_SESSION['user_id']);
 <nav class="navbar navbar-expand-lg sticky-top py-3" style="background-color: #ffffff; box-shadow: 0 5px 15px rgba(220, 53, 69, 0.08);">
     <div class="container">
         <!-- Logo -->
-        <a href="index.php" class="navbar-brand d-flex align-items-center">
+        <a href="index.php" class="navbar-brand d-flex align-items-center"
+            style="text-decoration: none; display: flex; align-items: center; transition: transform 0.3s ease-in-out;"
+            onmouseover="this.style.transform='scale(1.1)'"
+            onmouseout="this.style.transform='scale(1)'">
+
             <div class="d-flex align-items-center">
                 <i class="bi bi-shop fs-1 me-2" style="color: #dc3545;"></i>
-                <h1 class="m-0 text-uppercase fw-bold">
-                    <span style="color: #dc3545;">PNT</span><span>PET</span>
+                <h1 class="m-0 text-uppercase fw-bold"
+                    style="font-size: 32px; font-weight: bold; letter-spacing: 2px; transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;">
+
+                    <span style="color: #dc3545; transition: color 0.3s ease-in-out;">PNT</span>
+                    <span>PET</span>
                 </h1>
             </div>
         </a>
+
 
         <!-- Toggle button -->
         <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

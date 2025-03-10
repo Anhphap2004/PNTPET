@@ -22,12 +22,12 @@ if (!$result) {
                             <div class="position-relative mb-4">
                                 <img class="img-fluid mx-auto" src="../img/Testimonial/<?= htmlspecialchars($row['image']) ?>" alt="">
                                 <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style="width: 45px; height: 45px;">
-                                    <i class="bi bi-chat-square-quote text-primary"></i>
+                                    <i class="bi bi-chat-square-quote text-danger"></i>
                                 </div>
                             </div>
                             <p><?= htmlspecialchars($row['review_text']) ?></p>
                             <hr class="w-25 mx-auto">
-                            <h5 class="text-uppercase text-primary"><?= htmlspecialchars($row['client_name']) ?></h5>
+                            <h5 class="text-uppercase text-danger"><?= htmlspecialchars($row['client_name']) ?></h5>
                             <span><?= htmlspecialchars($row['profession']) ?></span>
                         </div>
                     <?php endwhile; ?>

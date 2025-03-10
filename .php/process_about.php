@@ -28,13 +28,13 @@ $conn->close();
                 </div>
             </div>
             <div class="col-lg-7">
-                <div class="border-start border-5 border-primary ps-5 mb-5">
-                    <h6 class="text-primary text-uppercase">Về Chúng Tôi</h6>
-                    <h1 class="display-6 text-uppercase mb-0">
+                <div style="border-color: #dc3545;" class="border-start border-5 ps-5 mb-5">
+                    <h6 style="color: #dc3545;" class="text-uppercase">Về Chúng Tôi</h6>
+                    <h1 style="font-family: Playball, cursive; color: #dc3545" class="display-6  mb-0">
                         <?= htmlspecialchars($row['title'] ?? 'Chúng tôi luôn mang lại niềm vui cho thú cưng của bạn') ?>
                     </h1>
                 </div>
-                <h5 class="text-body mb-4">
+                <h5 style="font-family: Montserrat, sans-serif; font-weight: 400; color:#dc3545" class=" mb-4">
                     <?= htmlspecialchars($row['description'] ?? 'Chưa có mô tả.') ?>
                 </h5>
                 <div class="bg-light p-4">
@@ -45,7 +45,7 @@ $conn->close();
                                 aria-selected="true">Sứ mệnh của chúng tôi</button>
                         </li>
                         <li class="nav-item w-50" role="presentation">
-                            <button class="nav-link text-uppercase w-100" id="pills-2-tab" data-bs-toggle="pill"
+                            <button style="color: #dc3545;" class="nav-link text-uppercase w-100" id="pills-2-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-2"
                                 aria-selected="false">Tầm nhìn của chúng tôi</button>
                         </li>

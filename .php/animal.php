@@ -15,7 +15,7 @@ include("config.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
+    <link href="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/style.css" rel="stylesheet" />
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -59,6 +59,7 @@ include("config.php");
 </head>
 
 <body>
+    <canvas id="canvas" style="position:fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
     <!-- PHẦN KHỞI TẠO MENU  Start -->
     <?php
     include("process_menu.php");
@@ -66,8 +67,8 @@ include("config.php");
     <!-- MENU End -->
     <div class="container mt-5">
         <div class="row mb-4">
-            <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
-                <h6 class="text-primary text-uppercase">THÚ CƯNG</h6>
+            <div class="border-start border-5 border-danger ps-5 mb-5" style="max-width: 600px;">
+                <h6 class="text-danger text-uppercase">THÚ CƯNG</h6>
                 <h1 class="display-5 text-uppercase mb-0">THƯ VIỆN THÚ CƯNG</h1>
             </div>
         </div>
@@ -83,7 +84,7 @@ include("config.php");
                     <div class="col">
                         <div class="card h-100">
                             <div class="card-img-container">
-                                <img src="<?= htmlspecialchars($row["image"]) ?>" class="card-img-top img-fluid" alt="<?= htmlspecialchars($row["name"]) ?>">
+                                <img src="../img/Animal/<?= htmlspecialchars($row["image"]) ?>" class="card-img-top img-fluid" alt="<?= htmlspecialchars($row["name"]) ?>">
                             </div>
                             <div class="card-body text-center">
                                 <h5 class="card-title">
@@ -122,7 +123,8 @@ include("config.php");
 <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
 <!-- Bootstrap JS Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdn.leanhduc.pro.vn/jquery/3.6.0.min.js"></script>
+<script src="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/main.js"></script>
 <!-- Template Javascript -->
 <script src="../js/main.js"></script>
 </body>

@@ -7,7 +7,7 @@
     <meta comment="width=device-width, initial-scale=1.0" name="viewport">
     <meta comment="Free HTML Templates" name="keywords">
     <meta comment="Free HTML Templates" name="description">
-
+    <link href="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/style.css" rel="stylesheet" />
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
 
@@ -30,6 +30,7 @@
 </head>
 
 <body>
+    <canvas id="canvas" style="position:fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
     <!-- Navbar Start -->
     <?php include 'process_menu.php'; ?>
     <!-- Navbar End -->
@@ -89,7 +90,7 @@
 
                 <!-- Comment List Start -->
                 <div class="mb-5">
-                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">
+                    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">
                         <?php echo $result_comments->num_rows; ?> Người bình luận 💭
                     </h3>
 
@@ -118,13 +119,13 @@
                                 style="width: 45px; height: 45px; object-fit: cover;">
                             <div class="ps-3">
                                 <h6>
-                                    <a href="">
+                                    <a class="text-danger" href="">
                                         <?php echo htmlspecialchars($display_name); ?>
                                     </a>
                                     <small><i><?php echo date("d M Y", strtotime($comment['created_at'])); ?></i></small>
                                 </h6>
                                 <p><?php echo nl2br(htmlspecialchars($comment['comment'])); ?></p>
-                                <button class="btn btn-sm btn-light">Reply</button>
+                                <button class="btn btn-sm btn-light">Phản Hồi</button>
                             </div>
                         </div>
                     <?php endwhile; ?>
@@ -142,7 +143,7 @@
                 <!-- Comment Form Start -->
                 <!-- Comment Form Start -->
                 <div class="bg-light rounded p-4 shadow">
-                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Leave a comment</h3>
+                    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Leave a comment</h3>
                     <form action="process_review.php" method="POST">
                         <input type="hidden" name="animal_id" value="<?php echo $animal_id; ?>">
 
@@ -174,7 +175,7 @@
 
                         <div class="row mt-3">
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3 rounded-pill fw-bold" type="submit">
+                                <button class="btn btn-danger w-100 py-3 rounded-pill fw-bold" type="submit">
                                     🚀 Leave Your Comment
                                 </button>
                             </div>
@@ -192,7 +193,7 @@
                 <div class="mb-5">
                     <div class="input-group">
                         <input type="text" class="form-control p-3" placeholder="Keyword">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-danger px-4"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
                 <!-- Search Form End -->
@@ -213,12 +214,12 @@
 
                 <!-- DANH MỤC THÚ CƯNG Category Start -->
                 <div class="mb-5">
-                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">DANH MỤC</h3>
+                    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">DANH MỤC</h3>
                     <div class="d-flex flex-column justify-content-start">
                         <?php if (!empty($category) && isset($category['category_name'])) : ?>
                             <a href="#" class="d-flex align-items-center py-2 px-3 bg-light mb-1">
-                                <i class="bi bi-arrow-right text-primary me-2"></i>
-                                <span class="fw-bold fs-5 text-black category-highlight">
+                                <i class="bi bi-arrow-right text-danger me-2"></i>
+                                <span class="fw-bold fs-5 text-danger category-highlight">
                                     <?= htmlspecialchars($category['category_name']) ?>
                                 </span>
                             </a>
@@ -256,14 +257,14 @@
                 $stmt->close();
                 ?>
                 <div class="mb-5">
-                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Động vật liên quan</h3>
+                    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4 text-danger">Động vật liên quan</h3>
 
                     <?php if (!empty($relatedAnimals)) : ?>
                         <?php foreach ($relatedAnimals as $animal) : ?>
                             <div class="d-flex overflow-hidden mb-3 align-items-start">
-                                <img class="img-fluid" src="<?= htmlspecialchars($animal['image']) ?>" style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                                <img class="img-fluid" src="../img/Animal/<?= htmlspecialchars($animal['image']) ?>" style="width: 100px; height: 100px; object-fit: cover;" alt="">
                                 <div class="ms-2">
-                                    <a href="detail_animal.php?id=<?= $animal['animal_id'] ?>" class="animal-name"><?= htmlspecialchars($animal['name']) ?></a>
+                                    <a href="detail_animal.php?id=<?= $animal['animal_id'] ?>" class="animal-name text-danger"><?= htmlspecialchars($animal['name']) ?></a>
                                     <p class="animal-desc"><?= htmlspecialchars($animal['description']) ?></p>
                                 </div>
                             </div>
@@ -310,16 +311,16 @@
 
                 <!-- Bắt đầu Tags -->
                 <div class="mb-5">
-                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Từ khoá phổ biến</h3>
-                    <div class="d-flex flex-wrap m-n1"> <a href="" class="btn btn-primary m-1">Thiết kế</a> <a href="" class="btn btn-primary m-1">Phát triển</a> <a href="" class="btn btn-primary m-1">Tiếp thị</a> <a href="" class="btn btn-primary m-1">SEO</a> <a href="" class="btn btn-primary m-1">Viết lách</a> <a href="" class="btn btn-primary m-1">Tư vấn</a> <a href="" class="btn btn-primary m-1">Thiết kế</a> <a href="" class="btn btn-primary m-1">Phát triển</a> <a href="" class="btn btn-primary m-1">Tiếp thị</a> <a href="" class="btn btn-primary m-1">SEO</a> <a href="" class="btn btn-primary m-1">Viết lách</a> <a href="" class="btn btn-primary m-1">Tư vấn</a> </div>
+                    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Từ khoá phổ biến</h3>
+                    <div class="d-flex flex-wrap m-n1"> <a href="" class="btn btn-danger m-1">Thiết kế</a> <a href="" class="btn btn-danger m-1">Phát triển</a> <a href="" class="btn btn-danger m-1">Tiếp thị</a> <a href="" class="btn btn-danger m-1">SEO</a> <a href="" class="btn btn-danger m-1">Viết lách</a> <a href="" class="btn btn-danger m-1">Tư vấn</a> <a href="" class="btn btn-danger m-1">Thiết kế</a> <a href="" class="btn btn-danger m-1">Phát triển</a> <a href="" class="btn btn-danger m-1">Tiếp thị</a> <a href="" class="btn btn-danger m-1">SEO</a> <a href="" class="btn btn-danger m-1">Viết lách</a> <a href="" class="btn btn-danger m-1">Tư vấn</a> </div>
                 </div> <!-- Kết thúc Tags -->
 
                 <!-- Bắt đầu Nội dung Văn bản -->
                 <div>
-                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Nội dung Văn bản</h3>
+                    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Nội dung Văn bản</h3>
                     <div class="bg-light text-center" style="padding: 30px;">
                         <p>Chào mừng bạn đến với trang của chúng tôi! Hãy khám phá những bài viết mới nhất và những thông tin hữu ích về chủ đề bạn quan tâm.</p>
-                        <a href="" class="btn btn-primary py-2 px-4">Đọc thêm</a>
+                        <a href="" class="btn btn-danger py-2 px-4">Đọc thêm</a>
                     </div>
                 </div>
                 <!-- Kết thúc Nội dung Văn bản -->
@@ -337,50 +338,50 @@
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Liên Hệ</h5>
+                    <h5 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Liên Hệ</h5>
                     <p class="mb-4">Chúng tôi luôn sẵn sàng hỗ trợ bạn. Liên hệ ngay để được tư vấn tốt nhất!</p>
-                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>309 Nguyễn Thiếp, TP VINH, Việt Nam</p>
-                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>Pntpet@example.com</p>
-                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+84 339 573 127</p>
+                    <p class="mb-2"><i class="bi bi-geo-alt text-danger me-2"></i>309 Nguyễn Thiếp, TP VINH, Việt Nam</p>
+                    <p class="mb-2"><i class="bi bi-envelope-open text-danger me-2"></i>Pntpet@example.com</p>
+                    <p class="mb-0"><i class="bi bi-telephone text-danger me-2"></i>+84 339 573 127</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Liên Kết Nhanh</h5>
+                    <h5 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Liên Kết Nhanh</h5>
                     <div class="d-flex flex-column justify-comment-start">
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Về Chúng
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Trang Chủ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Về Chúng
                             Tôi</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Dịch Vụ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Đội Ngũ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Blog</a>
-                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Dịch Vụ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Đội Ngũ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Blog</a>
+                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Liên Hệ</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Liên Kết Phổ Biến</h5>
+                    <h5 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Liên Kết Phổ Biến</h5>
                     <div class="d-flex flex-column justify-comment-start">
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Về Chúng
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Trang Chủ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Về Chúng
                             Tôi</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Dịch Vụ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Đội Ngũ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Blog</a>
-                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Dịch Vụ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Đội Ngũ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Blog</a>
+                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Liên Hệ</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Bản Tin</h5>
+                    <h5 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Bản Tin</h5>
                     <form action="">
                         <div class="input-group">
                             <input type="text" class="form-control p-3" placeholder="Nhập Email của bạn">
-                            <button class="btn btn-primary">Đăng Ký</button>
+                            <button class="btn btn-danger">Đăng Ký</button>
                         </div>
                     </form>
                     <h6 class="text-uppercase mt-4 mb-3">Theo Dõi Chúng Tôi</h6>
                     <div class="d-flex">
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-twitter"></i></a>
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-facebook"></i></a>
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-linkedin"></i></a>
-                        <a class="btn btn-outline-primary btn-square" href="#"><i class="bi bi-instagram"></i></a>
+                        <a class="btn btn-outline-danger btn-square me-2" href="#"><i class="bi bi-twitter"></i></a>
+                        <a class="btn btn-outline-danger btn-square me-2" href="#"><i class="bi bi-facebook"></i></a>
+                        <a class="btn btn-outline-danger btn-square me-2" href="#"><i class="bi bi-linkedin"></i></a>
+                        <a class="btn btn-outline-danger btn-square" href="#"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-12 text-center text-body">
@@ -417,9 +418,10 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-danger py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-
+    <script src="https://cdn.leanhduc.pro.vn/jquery/3.6.0.min.js"></script>
+    <script src="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/main.js"></script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

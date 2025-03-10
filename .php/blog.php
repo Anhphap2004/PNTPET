@@ -10,7 +10,7 @@
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
-
+    <link href="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/style.css" rel="stylesheet" />
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -31,6 +31,7 @@
 </head>
 
 <body>
+    <canvas id="canvas" style="position:fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
     <!-- Navbar Start -->
     <?php include 'process_menu.php'; ?>
     <!-- Navbar End -->
@@ -66,7 +67,7 @@
                                     </div>
                                     <h5 class="text-uppercase mb-3"><?= htmlspecialchars($row['title']) ?></h5>
                                     <p><?php echo substr($row['excerpt'], 0, 100) . '...'; ?></p>
-                                    <a class="text-primary text-uppercase" href="process_blog_detail.php?id=<?php echo $row['post_id']; ?>">Read More<i class="bi bi-chevron-right"></i></a>
+                                    <a class="text-danger text-uppercase" href="process_blog_detail.php?id=<?php echo $row['post_id']; ?>">Read More<i class="bi bi-chevron-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +115,7 @@
                 <div class="mb-5">
                     <div class="input-group">
                         <input type="text" class="form-control p-3" placeholder="Keyword">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-danger px-4"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
                 <!-- Search Form End -->
@@ -129,16 +130,16 @@
 
                 <!-- Bắt đầu Tags -->
                 <div class="mb-5">
-                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Từ khoá phổ biến</h3>
-                    <div class="d-flex flex-wrap m-n1"> <a href="" class="btn btn-primary m-1">Thiết kế</a> <a href="" class="btn btn-primary m-1">Phát triển</a> <a href="" class="btn btn-primary m-1">Tiếp thị</a> <a href="" class="btn btn-primary m-1">SEO</a> <a href="" class="btn btn-primary m-1">Viết lách</a> <a href="" class="btn btn-primary m-1">Tư vấn</a> <a href="" class="btn btn-primary m-1">Thiết kế</a> <a href="" class="btn btn-primary m-1">Phát triển</a> <a href="" class="btn btn-primary m-1">Tiếp thị</a> <a href="" class="btn btn-primary m-1">SEO</a> <a href="" class="btn btn-primary m-1">Viết lách</a> <a href="" class="btn btn-primary m-1">Tư vấn</a> </div>
+                    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Từ khoá phổ biến</h3>
+                    <div class="d-flex flex-wrap m-n1"> <a href="" class="btn btn-danger m-1">Thiết kế</a> <a href="" class="btn btn-danger m-1">Phát triển</a> <a href="" class="btn btn-danger m-1">Tiếp thị</a> <a href="" class="btn btn-danger m-1">SEO</a> <a href="" class="btn btn-danger m-1">Viết lách</a> <a href="" class="btn btn-danger m-1">Tư vấn</a> <a href="" class="btn btn-danger m-1">Thiết kế</a> <a href="" class="btn btn-danger m-1">Phát triển</a> <a href="" class="btn btn-danger m-1">Tiếp thị</a> <a href="" class="btn btn-danger m-1">SEO</a> <a href="" class="btn btn-danger m-1">Viết lách</a> <a href="" class="btn btn-danger m-1">Tư vấn</a> </div>
                 </div> <!-- Kết thúc Tags -->
 
                 <!-- Bắt đầu Nội dung Văn bản -->
                 <div>
-                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Nội dung Văn bản</h3>
+                    <h3 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Nội dung Văn bản</h3>
                     <div class="bg-light text-center" style="padding: 30px;">
                         <p>Chào mừng bạn đến với trang của chúng tôi! Hãy khám phá những bài viết mới nhất và những thông tin hữu ích về chủ đề bạn quan tâm.</p>
-                        <a href="" class="btn btn-primary py-2 px-4">Đọc thêm</a>
+                        <a href="" class="btn btn-danger py-2 px-4">Đọc thêm</a>
                     </div>
                 </div>
                 <!-- Kết thúc Nội dung Văn bản -->
@@ -154,50 +155,50 @@
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Liên Hệ</h5>
+                    <h5 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Liên Hệ</h5>
                     <p class="mb-4">Chúng tôi luôn sẵn sàng hỗ trợ bạn. Liên hệ ngay để được tư vấn tốt nhất!</p>
-                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>309 Nguyễn Thiếp, TP VINH, Việt Nam</p>
-                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>Pntpet@example.com</p>
-                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+84 339 573 127</p>
+                    <p class="mb-2"><i class="bi bi-geo-alt text-danger me-2"></i>309 Nguyễn Thiếp, TP VINH, Việt Nam</p>
+                    <p class="mb-2"><i class="bi bi-envelope-open text-danger me-2"></i>Pntpet@example.com</p>
+                    <p class="mb-0"><i class="bi bi-telephone text-danger me-2"></i>+84 339 573 127</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Liên Kết Nhanh</h5>
+                    <h5 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Liên Kết Nhanh</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Về Chúng
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Trang Chủ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Về Chúng
                             Tôi</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Dịch Vụ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Đội Ngũ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Blog</a>
-                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Dịch Vụ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Đội Ngũ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Blog</a>
+                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Liên Hệ</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Liên Kết Phổ Biến</h5>
+                    <h5 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Liên Kết Phổ Biến</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Về Chúng
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Trang Chủ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Về Chúng
                             Tôi</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Dịch Vụ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Đội Ngũ</a>
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Blog</a>
-                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Dịch Vụ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Đội Ngũ</a>
+                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Blog</a>
+                        <a class="text-body" href="#"><i class="bi bi-arrow-right text-danger me-2"></i>Liên Hệ</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Bản Tin</h5>
+                    <h5 class="text-uppercase border-start border-5 border-danger ps-3 mb-4">Bản Tin</h5>
                     <form action="">
                         <div class="input-group">
                             <input type="text" class="form-control p-3" placeholder="Nhập Email của bạn">
-                            <button class="btn btn-primary">Đăng Ký</button>
+                            <button class="btn btn-danger">Đăng Ký</button>
                         </div>
                     </form>
                     <h6 class="text-uppercase mt-4 mb-3">Theo Dõi Chúng Tôi</h6>
                     <div class="d-flex">
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-twitter"></i></a>
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-facebook"></i></a>
-                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-linkedin"></i></a>
-                        <a class="btn btn-outline-primary btn-square" href="#"><i class="bi bi-instagram"></i></a>
+                        <a class="btn btn-outline-danger btn-square me-2" href="#"><i class="bi bi-twitter"></i></a>
+                        <a class="btn btn-outline-danger btn-square me-2" href="#"><i class="bi bi-facebook"></i></a>
+                        <a class="btn btn-outline-danger btn-square me-2" href="#"><i class="bi bi-linkedin"></i></a>
+                        <a class="btn btn-outline-danger btn-square" href="#"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-12 text-center text-body">
@@ -233,7 +234,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-danger py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
@@ -242,7 +243,8 @@
     <script src="../lib/easing/easing.min.js"></script>
     <script src="../lib/waypoints/waypoints.min.js"></script>
     <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-
+    <script src="https://cdn.leanhduc.pro.vn/jquery/3.6.0.min.js"></script>
+    <script src="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/main.js"></script>
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
 </body>
