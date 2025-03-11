@@ -10,11 +10,10 @@
 
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">
-    <link href="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/style.css" rel="stylesheet" />
     <!-- Icon Font Stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -31,7 +30,7 @@
 </head>
 
 <body>
-    <canvas id="canvas" style="position:fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
+
     <?php include 'process_menu.php'; ?>
 
     <!-- About Start -->
@@ -163,8 +162,7 @@
     <script src="../lib/easing/easing.min.js"></script>
     <script src="../lib/waypoints/waypoints.min.js"></script>
     <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="https://cdn.leanhduc.pro.vn/jquery/3.6.0.min.js"></script>
-    <script src="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/main.js"></script>
+    
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
 </body>

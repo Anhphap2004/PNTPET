@@ -25,11 +25,11 @@ $isLoggedIn = isset($_SESSION['user_id']);
             onmouseout="this.style.transform='scale(1)'">
 
             <div class="d-flex align-items-center">
-                <i class="bi bi-shop fs-1 me-2" style="color: #dc3545;"></i>
+                <i class="fa-solid fa-paw fs-1 me-2" style="color: #dc3545;"></i>
                 <h1 class="m-0 text-uppercase fw-bold"
                     style="font-size: 32px; font-weight: bold; letter-spacing: 2px; transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;">
 
-                    <span style="color: #dc3545; transition: color 0.3s ease-in-out;">PNT</span>
+                    <span class="brand-title" style="color: #dc3545; transition: color 0.3s ease-in-out;">PNT</span>
                     <span>PET</span>
                 </h1>
             </div>
@@ -51,7 +51,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
                     $menuUrl = ltrim($menu['url'], '/');
                     $isActive = (basename($menuUrl) == $currentPage) ? 'active' : '';
                 ?>
-                    <a style="color: #b31818" href="<?= $menuUrl ?>" class="nav-item nav-link fw-medium mx-2 <?= $isActive ?>">
+                    <a style="color: #b31818" href="<?= $menuUrl ?>" class="nav-item fw-bolder text-uppercase nav-link fw-medium mx-2 <?= $isActive ?>">
                         <?= $menu['title'] ?>
                         <?php if ($isActive): ?>
                             <div class="nav-indicator"></div>

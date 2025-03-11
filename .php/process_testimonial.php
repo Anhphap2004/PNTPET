@@ -12,16 +12,20 @@ if (!$result) {
 ?>
 
 <!-- Testimonial Start -->
-<div class="container-fluid bg-testimonial py-5" style="margin: 45px 0;">
+<div class="container-fluid py-5" style="margin: 45px 0;">
     <div class="container py-5">
-        <div class="row justify-content-end">
+        <div class="row align-items-center">
+            <!-- Cột chứa ảnh nền -->
+            <div class="col-lg-5 d-none d-lg-block bg-testimonial"></div>
+
+            <!-- Cột chứa nội dung testimonial -->
             <div class="col-lg-7">
-                <div class="owl-carousel testimonial-carousel bg-white p-5">
+                <div class="owl-carousel testimonial-carousel bg-white p-5 custom-border">
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-4">
                                 <img class="img-fluid mx-auto" src="../img/Testimonial/<?= htmlspecialchars($row['image']) ?>" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style="width: 45px; height: 45px;">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white border rounded-circle shadow-sm" style="width: 45px; height: 45px;">
                                     <i class="bi bi-chat-square-quote text-danger"></i>
                                 </div>
                             </div>
@@ -33,9 +37,11 @@ if (!$result) {
                     <?php endwhile; ?>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 <!-- Testimonial End -->
+
 
 <?php $conn->close(); ?>

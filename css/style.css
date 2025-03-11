@@ -389,9 +389,33 @@
     opacity: 1;
 }
 
+
 .bg-testimonial {
-    background: url(../img/testimonial.jpg) top left no-repeat;
+    background: url(../img/meodep.png);
     background-size: cover;
+    background-position: center;
+    height: 100%;
+    min-height: 400px; /* Điều chỉnh chiều cao nếu cần */
+     transition: all 0.3s ease-in-out;
+     border-radius: 30px;
+}
+.custom-border {
+  
+    border-radius: 15px; /* Bo góc nhẹ */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hiệu ứng khi hover */
+.custom-border, .bg-testimonial:hover {
+    transform: scale(1.02);
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Viền cho icon trích dẫn */
+.custom-border .bi-chat-square-quote {
+    font-size: 20px;
+    color: #ff6b6b;
 }
 
 .testimonial-carousel .owl-nav {
@@ -474,3 +498,37 @@
     overflow: hidden;
     margin-bottom: 20px;
   }
+  .brand-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #18a95e;
+    letter-spacing: 0.15em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  /* Add a subtle hover effect */
+  .brand-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #18a95e;
+    text-shadow: 
+      1px 1px 0 #fff,
+      2px 2px 0 #fff,
+      3px 3px 0 #ccc,
+      4px 4px 0 #aaa,
+      5px 5px 10px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+  }
+.paw-icon {
+    color: #549d53; /* Màu xanh nhạt cho icon */
+    font-size: 2.2rem; /* Kích thước icon */
+}
+
+ 

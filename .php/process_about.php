@@ -23,7 +23,7 @@ $conn->close();
             <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                 <div class="position-relative h-100">
                     <img class="position-absolute w-100 h-100 rounded"
-                        src="../img/<?= htmlspecialchars($row['image'] ?? '../img/about.jpg') ?>"
+                        src="../img/<?= htmlspecialchars($row['image'] ?? 'https://cdn.pixabay.com/photo/2023/07/04/05/19/cat-8105423_1280.jpg') ?>"
                         style="object-fit: cover;">
                 </div>
             </div>

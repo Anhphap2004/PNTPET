@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playball&display=swap" rel="stylesheet">
     <!-- Favicon -->
     <link href="../img/favicon.ico" rel="icon">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/style.css" rel="stylesheet" />
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -41,6 +41,9 @@
     ?>
     <!-- MENU End -->
 
+    <div style="position: absolute; pointer-events: none; right: 20px; top: 1250px">
+        <img style="width: 300px; height: 300px;" src="../TrangTri/1.gif"></img>
+    </div>
     <!-- PHẦN GIỚI THIỆU CHÍNH CỦA TRANG WEB -->
     <div class="container-fluid bg-danger py-5 mb-5 hero-header">
     </div>
